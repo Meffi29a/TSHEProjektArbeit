@@ -1,0 +1,25 @@
+﻿<Window x:Class="TSHEProjektArbeit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tabdata="clr-namespace:TSHEProjektArbeit.Views"
+        xmlns:local="clr-namespace:TSHEProjektArbeit"
+        mc:Ignorable="d"
+        Title="AlCulator" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Person">
+                <Grid>
+                    <tabdata:Person/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Zutaten">
+                <Grid>
+                    <tabdata:Zutaten/>
+                </Grid>
+            </TabItem>
+          
+        </TabControl>
+    </Grid>
+</Window>

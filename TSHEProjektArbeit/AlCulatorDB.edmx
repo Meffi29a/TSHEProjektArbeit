@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AlCulatorDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Alter" Type="int" Nullable="false" />
+          <Property Name="Gewicht" Type="int" Nullable="false" />
+          <Property Name="Groesse" Type="int" Nullable="false" />
+          <Property Name="Geschlecht" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Re_Su">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rezept_ID" Type="int" Nullable="false" />
+          <Property Name="Substanz_ID" Type="int" Nullable="false" />
+          <Property Name="Menge" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rezepte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Menge" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Substanzen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Volumengehlat" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Re_Su_Rezepte">
+          <End Role="Rezepte" Type="Self.Rezepte" Multiplicity="1" />
+          <End Role="Re_Su" Type="Self.Re_Su" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezepte">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Re_Su">
+              <PropertyRef Name="Rezept_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Re_Su_Substanzen">
+          <End Role="Substanzen" Type="Self.Substanzen" Multiplicity="1" />
+          <End Role="Re_Su" Type="Self.Re_Su" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Substanzen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Re_Su">
+              <PropertyRef Name="Substanz_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlCulatorDBStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personen" EntityType="Self.Personen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Re_Su" EntityType="Self.Re_Su" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezepte" EntityType="Self.Rezepte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Substanzen" EntityType="Self.Substanzen" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Re_Su_Rezepte" Association="Self.FK_Re_Su_Rezepte">
+            <End Role="Rezepte" EntitySet="Rezepte" />
+            <End Role="Re_Su" EntitySet="Re_Su" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Re_Su_Substanzen" Association="Self.FK_Re_Su_Substanzen">
+            <End Role="Substanzen" EntitySet="Substanzen" />
+            <End Role="Re_Su" EntitySet="Re_Su" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AlCulatorDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Alter" Type="Int32" Nullable="false" />
+          <Property Name="Gewicht" Type="Int32" Nullable="false" />
+          <Property Name="Groesse" Type="Int32" Nullable="false" />
+          <Property Name="Geschlecht" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Re_Su">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rezept_ID" Type="Int32" Nullable="false" />
+          <Property Name="Substanz_ID" Type="Int32" Nullable="false" />
+          <Property Name="Menge" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rezepte" Relationship="Self.FK_Re_Su_Rezepte" FromRole="Re_Su" ToRole="Rezepte" />
+          <NavigationProperty Name="Substanzen" Relationship="Self.FK_Re_Su_Substanzen" FromRole="Re_Su" ToRole="Substanzen" />
+        </EntityType>
+        <EntityType Name="Rezepte">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Menge" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Re_Su" Relationship="Self.FK_Re_Su_Rezepte" FromRole="Rezepte" ToRole="Re_Su" />
+        </EntityType>
+        <EntityType Name="Substanzen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Volumengehlat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Re_Su" Relationship="Self.FK_Re_Su_Substanzen" FromRole="Substanzen" ToRole="Re_Su" />
+        </EntityType>
+        <Association Name="FK_Re_Su_Rezepte">
+          <End Role="Rezepte" Type="Self.Rezepte" Multiplicity="1" />
+          <End Role="Re_Su" Type="Self.Re_Su" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezepte">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Re_Su">
+              <PropertyRef Name="Rezept_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Re_Su_Substanzen">
+          <End Role="Substanzen" Type="Self.Substanzen" Multiplicity="1" />
+          <End Role="Re_Su" Type="Self.Re_Su" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Substanzen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Re_Su">
+              <PropertyRef Name="Substanz_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlCulatorBD" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="Personen" EntityType="Self.Personen" />
+          <EntitySet Name="Re_Su" EntityType="Self.Re_Su" />
+          <EntitySet Name="Rezepte" EntityType="Self.Rezepte" />
+          <EntitySet Name="Substanzen" EntityType="Self.Substanzen" />
+          <AssociationSet Name="FK_Re_Su_Rezepte" Association="Self.FK_Re_Su_Rezepte">
+            <End Role="Rezepte" EntitySet="Rezepte" />
+            <End Role="Re_Su" EntitySet="Re_Su" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Re_Su_Substanzen" Association="Self.FK_Re_Su_Substanzen">
+            <End Role="Substanzen" EntitySet="Substanzen" />
+            <End Role="Re_Su" EntitySet="Re_Su" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AlCulatorDBStoreContainer" CdmEntityContainer="AlCulatorBD">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="AlCulatorDB.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personen">
+            <EntityTypeMapping TypeName="AlCulatorDB.Personen">
+              <MappingFragment StoreEntitySet="Personen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Alter" ColumnName="Alter" />
+                <ScalarProperty Name="Gewicht" ColumnName="Gewicht" />
+                <ScalarProperty Name="Groesse" ColumnName="Groesse" />
+                <ScalarProperty Name="Geschlecht" ColumnName="Geschlecht" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Re_Su">
+            <EntityTypeMapping TypeName="AlCulatorDB.Re_Su">
+              <MappingFragment StoreEntitySet="Re_Su">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Rezept_ID" ColumnName="Rezept_ID" />
+                <ScalarProperty Name="Substanz_ID" ColumnName="Substanz_ID" />
+                <ScalarProperty Name="Menge" ColumnName="Menge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezepte">
+            <EntityTypeMapping TypeName="AlCulatorDB.Rezepte">
+              <MappingFragment StoreEntitySet="Rezepte">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Menge" ColumnName="Menge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Substanzen">
+            <EntityTypeMapping TypeName="AlCulatorDB.Substanzen">
+              <MappingFragment StoreEntitySet="Substanzen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Volumengehlat" ColumnName="Volumengehlat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
