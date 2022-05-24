@@ -12,7 +12,7 @@ namespace TSHEProjektArbeit
 
 
 
-        public Personen SelectedPerson { 
+        public int SelectedPersonId { 
             get;
             set;
         } 
@@ -20,14 +20,7 @@ namespace TSHEProjektArbeit
         public Vault()
         {
 
-            SelectedPerson = new Personen
-            {
-                Name = "Testperson",
-                Alter = 40,
-                Geschlecht = true,
-                Gewicht = 60,
-                Groesse = 170
-            };
+            
         }
        
 

@@ -31,22 +31,24 @@ namespace TSHEProjektArbeit.Views
 
         public ObservableCollection<Personen> PersonenInDB { get; set; } = new ObservableCollection<Personen>();
         public Personen NewPerson { get; set; } = new Personen();
-        //public Personen testperson { get; set; }
         public Personen SelectedPerson
         {
             get
             {
-                using (var DB = new AlCulatorBD())
-                {
-                    var _person = DB.Personen.FirstOrDefault(x => x.Id == _SelectedPersonId);
-
-                  
-                    return _person;
-
-
-                }
+                return  ((MainWindow)Application.Current.MainWindow).SelectedPersonForMainWindow;
             }
-            set { }
+            set
+            {
+               // var person = ((MainWindow)Application.Current.MainWindow).SelectedPersonForMainWindow;
+               
+
+                ((MainWindow)Application.Current.MainWindow).SelectedPersonForMainWindow.Id = value.Id;
+                ((MainWindow)Application.Current.MainWindow).SelectedPersonForMainWindow.Name = value.Name;
+                ((MainWindow)Application.Current.MainWindow).SelectedPersonForMainWindow.Gewicht = value.Gewicht;
+                ((MainWindow)Application.Current.MainWindow).SelectedPersonForMainWindow.Alter = value.Alter;
+                ((MainWindow)Application.Current.MainWindow).SelectedPersonForMainWindow.Geschlecht = value.Geschlecht;
+
+            }
         }
         public Person()
         {
@@ -58,21 +60,20 @@ namespace TSHEProjektArbeit.Views
             {
                 var persons = DB.Personen.ToList();
                
-                //var persons = DB.Personen.Where(x => x.Geschlecht == true).Where(x=>x.Gewicht<=70).ToList();
+                NewPerson.Id = persons.First().Id;
+                NewPerson.Name = persons.First().Name;
+                NewPerson.Gewicht = persons.First().Gewicht;
+                NewPerson.Alter = persons.First().Alter;
+                NewPerson.Geschlecht = persons.First().Geschlecht;
 
                 foreach (var person in persons)
                 {
-
-
                     PersonenInDB.Add(person);
-
-
                 }
 
             }
 
             this.Language = XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);
-
 
             InitializeComponent();
             DataContext = this;

@@ -8,7 +8,14 @@
         mc:Ignorable="d"
         Title="AlCulator" Height="450" Width="800">
     <Grid>
-        <TabControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Test" />
+
+        <TabControl Grid.Row="1">
             <TabItem Header="Person">
                 <Grid>
                     <tabdata:Person/>

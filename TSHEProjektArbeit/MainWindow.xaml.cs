@@ -19,6 +19,10 @@ namespace TSHEProjektArbeit
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Personen SelectedPersonForMainWindow { 
+            get; 
+            set; 
+        } = new Personen();
 
         public MainWindow()
         {
