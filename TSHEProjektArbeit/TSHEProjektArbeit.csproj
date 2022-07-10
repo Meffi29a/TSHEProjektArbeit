@@ -104,6 +104,9 @@
       <DependentUpon>AlCulatorDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Vault.cs" />
+    <Compile Include="Views\KannIchNochFahren.xaml.cs">
+      <DependentUpon>KannIchNochFahren.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Person.xaml.cs">
       <DependentUpon>Person.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\KannIchNochFahren.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

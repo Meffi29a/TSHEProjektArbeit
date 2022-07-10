@@ -13,8 +13,6 @@
             <RowDefinition Height="10*"/>
 
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Test" />
-
         <TabControl Grid.Row="1">
             <TabItem Header="Person">
                 <Grid>
@@ -26,7 +24,12 @@
                     <tabdata:Zutaten/>
                 </Grid>
             </TabItem>
-          
+            <TabItem Header="Kann ich noch fahren?">
+                <Grid>
+                    <tabdata:KannIchNochFahren/>
+                </Grid>
+            </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

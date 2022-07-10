@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,11 @@ namespace TSHEProjektArbeit
             get; 
             set; 
         } = new Personen();
+        public ObservableCollection<Rezepte> GetränkeListe
+        {
+            get;
+            set;
+        } = new ObservableCollection<Rezepte>();
 
         public MainWindow()
         {

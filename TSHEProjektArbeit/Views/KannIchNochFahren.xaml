@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="TSHEProjektArbeit.Views.KannIchNochFahren"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TSHEProjektArbeit.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+    <DockPanel Background="White">
+
+        <StackPanel>
+            <TextBlock TextAlignment="Center" FontSize="20" Width="200" Margin="10,30,10,0"> Wer trinkt heute? </TextBlock>
+            <TextBlock TextAlignment="Center" FontSize="10" Margin="10,10,10,0"> Bitte markieren Sie eine Person <LineBreak> </LineBreak> in der Personenübersicht</TextBlock>
+            <Button Name="PersonButton" FontSize="11" Height="20" Margin="10,30,10,0"  Click="PersonButton_Click"> Aktuell ausgewählte Person anzeigen </Button>
+            <TextBlock Name="PersonBlock" TextAlignment="Center" Height="20" Margin="10,10,10,0" ></TextBlock>
+        </StackPanel>
+
+        <StackPanel>
+            <Button FontSize="15" Width="200" Height="90" Margin="10,50,10,0" Click="Button_Click">Kann ich denn jetzt fahren??</Button>
+            <DockPanel Margin="30,40,30,10" Width="400">
+                <TextBlock Name="Yes" Width="120" Height="100" Margin="0,0,0,0" HorizontalAlignment="Left" TextAlignment="Center" FontSize="70"  Visibility="Hidden" > YES</TextBlock>
+                <TextBlock Name ="No" Width="120" Height="100" Margin="0,0,0,0" HorizontalAlignment="Right" TextAlignment="Center" FontSize="70" Visibility="Hidden">  NO</TextBlock>
+                <!--Ursprünglich wollten wir das Nutzererlebnis verbessern, indem wir das Abfrageergebnis mit Images darstellen. Allerdings hatten wir zu große Probleme die Images an die Projekmappe zu binden.-->
+                <!--<Image Name="UP" Width="120" Height="120" Margin="0,0,0,0" HorizontalAlignment="Left" Source="C:\Users\scavone.colin\Desktop\UP.jfif" Visibility="Hidden"></Image>-->
+                <!--<Image Name ="DOWN" Width="120" Height="120" Margin="0,0,0,0" HorizontalAlignment="Right" Source="C:\Users\scavone.colin\Desktop\DOWN.jfif" Visibility="Hidden"></Image>-->
+            </DockPanel>
+            <TextBlock Name="Text" Height="20" FontSize="15" TextAlignment="Center" Margin="10,5,10,0" >Dein Promillewert ist:</TextBlock>
+            <TextBlock Name="Ausgabe" Text="0,00" Height="18" FontSize="14" TextAlignment="Center" Margin="10,5,10,0" Width="169" ></TextBlock>
+        </StackPanel>
+    </DockPanel>
+
+</UserControl>
